@@ -1,0 +1,12 @@
+fig/diagram.pdf
+fig/euler.pdf
+fig/graph.pdf
+fig/watermark.pdf
+
+paper.pdf
+talk.pdf
+talk-handout.pdf
+
+tmp/*
+
+*.swp
