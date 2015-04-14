@@ -1,0 +1,127 @@
+%% clistings.sty
+%% Copyright 2014, 2015  Rudy Matela
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% The Current Maintainer of this work is Rudy Matela
+%
+% This work consists solely of the file clistings.sty
+%
+%
+% --- ABOUT: ----
+%
+% This is a wrapper for the listings package.  Using my personal preferences
+% for typesetting source code in several languages.  It should base the
+% typesetting on colouring and not on font chaning: providing a "normal"
+% monospaced look-and-feel for source code.  The "c" in the "clistings" name
+% stands for coloured.
+%
+% This is not very organized, and probably will never be: I never intend to
+% make this general purpose enough for people in general to use.
+%
+% Contact me at: rudy@matela.com.br
+%
+%
+% Package options:
+%   fadenormal: normal fade, for paper and monitors
+%   fadeprojector: stronger fade, for projectors / lower contrast devices
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{clistings}[2015/02/24 Coloured Listings]
+\RequirePackage{listings}
+\RequirePackage{xcolor}
+% You can redefine these colors at your will in your tex file
+\definecolor{basic}{RGB}{0,0,0}%
+\definecolor{operator}{RGB}{180,110,45}%
+\definecolor{keyword}{RGB}{16,16,160}%
+\definecolor{string}{RGB}{160,16,16}%
+\definecolor{comment}{RGB}{64,192,64}%
+% todo: Fade out string -- use pinta -- white box 50% opacity (128)
+% for now falling back to basic fade:
+\DeclareOption{fadenormal}{%
+	\definecolor{fadebasic}{RGB}{128,128,128}%
+	\definecolor{fadeoperator}{RGB}{218,183,150}%
+	\definecolor{fadekeyword}{RGB}{136,136,208}%
+	\definecolor{fadestring}{RGB}{128,128,128}%
+	\definecolor{fadecomment}{RGB}{160,224,160}%
+}
+\DeclareOption{fadeprojector}{% + 32 on each element
+	\definecolor{fadebasic}{RGB}{160,160,160}%
+	\definecolor{fadeoperator}{RGB}{250,215,182}%
+	\definecolor{fadekeyword}{RGB}{168,168,240}%
+	\definecolor{fadestring}{RGB}{160,160,160}%
+	\definecolor{fadecomment}{RGB}{192,255,192}%
+}
+\DeclareOption{fadeprint}{% todo: Improve this by doing on a tool
+	%\definecolor{fadebasic}{RGB}{96,96,96}%
+	\definecolor{fadebasic}{RGB}{64,64,64}%
+	\definecolor{fadeoperator}{RGB}{218,183,150}%
+	\definecolor{fadekeyword}{RGB}{136,136,208}%
+	\definecolor{fadestring}{RGB}{128,128,128}%
+	\definecolor{fadecomment}{RGB}{160,224,160}%
+}
+\ExecuteOptions{fadenormal}
+\ProcessOptions
+% Monospaced look-and-feel using colors for everything
+\lstset{%
+  basicstyle=\ttfamily\color{basic},%
+  commentstyle=\color{comment},%
+  keywordstyle=\color{keyword},%
+  stringstyle=\color{string},%
+  columns=flexible,%
+  keepspaces=true,%
+  inputencoding=utf8,%
+  extendedchars=true,%
+  literate={↑}{{$\uparrow$}}1,%
+  showlines=true%
+}
+\lstdefinelanguage{hs}{%
+  sensitive,%
+  keywordstyle=\color{keyword},%
+  morekeywords={where,Int,Eq,Ord,import,Bool,Char,String,Property,Integer,Enumerable,Maybe,Show,Listable,Mutable,instance,let,in,class},%
+  alsoletter={.+=:-><~?\&|\$!\^/\\},
+  keywordstyle={[2]\color{operator}},
+  morekeywords={[2].,+,++,->,--,-,<,>,=>,:,::,=,==,/=,===,~=?,..,...,>=,==>,<=,\&\&,\&\&\&,||,\$,!!,=~,==~,<<=,===>,==>\^,===>\^,/,/./,/+/,?==>?,\\/,/^/,/^</},%
+  morecomment=[l]--,%
+  morecomment=[n]{\{-}{-\}},%
+  morestring=[b]"%
+}
+% Haskell environment :-)
+\lstnewenvironment{haskell}[1][]{\lstset{language=hs,#1}}{}
+\lstdefinestyle{start}{belowskip=0pt}
+\lstdefinestyle{end}{aboveskip=0pt}
+\lstdefinestyle{middle}{style=start,style=end}
+\lstdefinestyle{fade}{%
+  basicstyle=\ttfamily\color{fadebasic},%
+  commentstyle=\color{fadecomment},%
+  keywordstyle=\color{fadekeyword},%
+  keywordstyle={[2]\color{fadeoperator}},%
+  stringstyle=\color{fadestring},%
+}
+\lstdefinestyle{ftfade}{%
+  style=fade,
+  basicstyle=\footnotesize\ttfamily\color{fadebasic}%
+}
+\lstdefinestyle{none}{}
+\lstdefinestyle{fadestart}{style=fade,style=start}
+\lstdefinestyle{fademiddle}{style=fade,style=middle}
+\lstdefinestyle{fadeend}{style=fade,style=end}
+\lstdefinestyle{ftfadestart}{style=ftfade,style=start}
+\lstdefinestyle{ftfademiddle}{style=ftfade,style=middle}
+\lstdefinestyle{ftfadeend}{style=ftfade,style=end}
+\lstnewenvironment{smhaskell}[1][]{\lstset{basicstyle=\small\ttfamily,language=hs,#1}}{}
+\lstnewenvironment{fthaskell}[1][]{\lstset{basicstyle=\footnotesize\ttfamily,language=hs,#1}}{}
+\lstnewenvironment{schaskell}{\lstset{basicstyle=\scriptsize\ttfamily,language=hs}}{}
+\lstnewenvironment{tnhaskell}{\lstset{basicstyle=\tiny\ttfamily,language=hs}}{}
+% Either use:
+%    \begin{lstlisting}[language=hs]
+%    \end{lstlisting}
+% Or:
+%    \begin{haskell}
+%    \end{haskell}
+\newcommand{\inputhaskell}{\lstinputlisting[language=hs]}

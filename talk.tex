@@ -1,0 +1,125 @@
+\RequirePackage{ifjobname}
+\ifjobname{talk-handout}{
+	\documentclass[handout]{beamer}
+}{
+	\documentclass{beamer}
+}
+
+\usetheme{default}
+\usecolortheme{default}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{moreverb}
+\usepackage{multicol}
+\usepackage{sty/macros}
+
+\title[My talk]{
+	\LaTeX\ talk template
+}
+\author[John Doe]{%
+	John Doe \\
+	\texttt{\footnotesize johndoe@example.com}
+}
+\institute[DSS -- SUS]{%
+	Department of Scientific Science \\
+	Scientific University of Someplace
+}
+\date{\today}
+
+% If you want to reshow the outline at the beginning of each section
+%\AtBeginSection[] {
+%	\framet[Outline]{
+%		\tableofcontents[currentsection,hideothersubsections]
+%	}
+%}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\framet[Outline]{ \tableofcontents }
+
+
+\section{Simple examples}
+\frameT{Simple examples}
+
+\framei[Bullet points]{
+	\im This shows how to typeset bullet points
+	\im It is possible to typeset sub-items: \ize{
+		\im like
+		\im this
+	}
+	\im That's it
+}
+
+\framei[Image and bullets]{
+	\item An important graph follows:
+	\incg[0.8]{euler}
+	\item indeed...
+}
+
+\framet[Centered image, no bullets]{
+	\cincg{diagram}
+}
+
+\framei[Animating]{
+	\pitem This is an:
+	\pitem animated
+	\pitem slide
+}
+
+\framet[Text-only slide]{
+	A text-only slide.
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+	veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+	commodo consequat.
+}
+
+\section{More simple examples}
+\frameT{More simple examples}
+
+\framed[Item descriptions]{
+	\item[This] is like this
+	\item[That] is like that
+	\item[Something] is like a thing
+}
+
+% Specifying whether a slide is going to appear in the handout is not supported
+% by custom sty macros.  Explicit beamer code looks like this:
+\begin{frame}<1|handout:0>{Slide not in handout}
+	\begin{itemize}
+		\item This slide:
+		\begin{itemize}
+			\item is not in the handout
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}<0|handout:1>{Slide only handout}
+	\begin{itemize}
+		\item This slide:
+		\begin{itemize}
+			\item is only in the handout
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+% To use verbatim or listing environments you have to make the frame fragile.
+% This makes the compilation a bit slower, potentially a lot slower if you do
+% this for a lot of slides.
+\begin{frame}[fragile,t]{Hello world}
+	\begin{verbatim}
+	int main()
+	{
+	    printf("Hello world");
+	    return 0;
+	}
+	\end{verbatim}
+\end{frame}
+
+\frameT{Thank you!}
+
+\end{document}

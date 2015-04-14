@@ -1,0 +1,189 @@
+% Some macros to save typing time
+%
+% Author: Rudy Matela <rudy@matela.com.br>
+%
+% This was created as part of the textemplate.
+
+\RequirePackage{enumerate,multicol,graphicx}
+
+
+
+% -------- General purpose macros -------- %
+
+% Command \incg[proportional_width]{name}
+% proportional_width: The figure width, default is .5
+% name: file name to be prepended by fig/
+\newcommand{\incg}[2][.5]{
+	\includegraphics[width=#1\textwidth]{fig/#2}
+}
+
+\newcommand{\cincg}[2][.5]{
+	\begin{center}
+	\incg[#1]{#2}
+	\end{center}
+}
+
+% Command \incgh[proportional_height]{name}
+% proportional_height: The figure height, default is .5
+% name: file name to be prepended by fig/
+\newcommand{\incgh}[2][.5]{
+	\includegraphics[height=#1\textwidth]{fig/#2}
+}
+
+% TODO: Check if any of those figure-including macros are introducing spaces.
+% it looks like they are
+
+% Command \fig[proportional_width]{name}{Caption}
+% proportional_width: The figure width, default is .5
+% name: file name and label name to pe prepended by fig/ and fig:
+% Caption: figure caption
+\newcommand{\fig}[3][.5]{
+	\begin{cfigure}
+		\incg[#1]{#2}
+		\caption{#3}
+		\label{fig:#2}
+	\end{cfigure}
+}
+
+
+% Centered figure environment, same parameters as the original one
+\newenvironment{cfigure}[1][htbp]{
+	\begin{figure}[#1]
+	\centering
+}{
+	\end{figure}
+}
+
+
+% Centered figure with automatic caption and label
+\newenvironment{cfigurecl}[3][htbp]{
+	\begin{cfigure}[#1]
+	\def\cfigureclcaption{#3}
+	\def\cfigurecllabel{fig:#2}
+}{
+	\caption{\cfigureclcaption}
+	\label{\cfigurecllabel}
+	\end{cfigure}
+}
+
+
+% Example:
+% \begin{stable}{|l|c|r|}{id}{Caption}
+% 	this & is & a \\
+%   test & O  & o \\
+% \end{stable}
+% Take a look at table \ref{tab:id}
+\newenvironment{stable}[4][htb]{
+	\begin{table}[#1]
+		\small
+		\caption{#4}
+		\label{tab:#3}
+		\begin{ctabular}{#2}
+}{
+		\end{ctabular}
+	\end{table} 
+}
+
+
+\newenvironment{ntable}[4][htb]{
+	\begin{table}[#1]
+		\small
+		\caption{#4}
+		\label{tab:#3}
+		\begin{ctabular}{#2}
+}{
+		\end{ctabular}
+	\end{table} 
+}
+
+\newenvironment{xsctabular}[1]{
+	\footnotesize
+	\begin{ctabular}{#1}
+}{
+	\end{ctabular}
+}
+
+\newenvironment{sctabular}[1]{
+	\small
+	\begin{ctabular}{#1}
+}{
+	\end{ctabular}
+}
+
+
+% Centered tabular environment, same parameters as the original one
+\newenvironment{ctabular}[1]{
+	\begin{center}
+		\begin{tabular}{#1}
+}{
+		\end{tabular}
+	\end{center}
+}
+
+
+
+% -------- Beamer Presentation macros --------- %
+
+\newcommand{\framet}[2][]{\begin{frame} \frametitle{#1} #2 \end{frame}}
+\newcommand{\framei}[2][]{\begin{frame} \frametitle{#1} \begin{itemize} #2 \end{itemize} \end{frame}}
+\newcommand{\framed}[2][]{\begin{frame} \frametitle{#1} \begin{description} #2 \end{description} \end{frame}}
+\newcommand{\framee}[2][]{\begin{frame} \frametitle{#1} \begin{enumerate} #2 \end{enumerate} \end{frame}}
+\newcommand{\frameT}[1]{\frame{\centering \usebeamerfont{frametitle} \usebeamercolor[fg]{frametitle} #1}}
+
+\newcommand{\sframet}[2]{\section{#1}\framet[#1]{#2}}
+\newcommand{\sframei}[2]{\section{#1}\framei[#1]{#2}}
+\newcommand{\sframed}[2]{\section{#1}\framed[#1]{#2}}
+
+\newcommand{\ssframet}[2]{\subsection{#1}\framet[#1]{#2}}
+\newcommand{\ssframei}[2]{\subsection{#1}\framei[#1]{#2}}
+\newcommand{\ssframed}[2]{\subsection{#1}\framed[#1]{#2}}
+
+% Commands for saving typing time
+\newcommand{\ize}[1]{\begin{itemize}#1\end{itemize}}
+\newcommand{\enu}[2][1.]{\begin{enumerate}[#1]#2\end{enumerate}}
+\newcommand{\don}[1]{\begin{description}#1\end{description}}
+\newcommand{\alr}[2]{\begin{alertblock}{#1}#2\end{alertblock}}
+\newcommand{\mc}[2][2]{\begin{multicols}{#1}#2\end{multicols}}
+\newcommand{\mcdon}[2][2]{\mc[#1]{\don{#2}}}
+\newcommand{\mcize}[2][2]{\mc[#1]{\ize{#2}}}
+\newcommand{\xmcize}[2][2]{\vspace{-2ex}\mc[#1]{\ize{#2}}}
+
+\newcommand{\pitem}{\pause \item}
+
+% When you don't want to type item:
+\newcommand{\im}{\item}
+
+% Gray strike out (needs xcolor and ulem)
+\newcommand{\gsout}[1]{\textcolor{gray}{\sout{#1}}}
+
+% When you're using itemize for description:
+\newcommand{\imb}[1]{\item[\textbf{#1}]}
+
+
+
+
+% Miscellaneos commands
+
+% Text \pass{text} text == Text text text
+\newcommand{\pass}[1]{#1}
+\newcommand{\pss}[1]{#1}
+
+% NOTE: This might create two spaces:
+% Text \comment{text} text == Text  text
+% Text \comment{text }text == Text text
+\newcommand{\cmm}[1]{}
+
+
+
+% named abstract, it backups the original name
+\newenvironment{namedabstract}[1]{
+	\def\originalabstractname{\abstractname}
+	\renewcommand{\abstractname}{#1}
+	\begin{abstract}
+}{
+	\end{abstract}
+	\renewcommand{\abstractname}{\originalabstractname}
+}
+
+% cite with possesive, for use with natbib package
+\newcommand{\citepss}[1]{\citeauthor{#1}'s (\citeyear{#1})}

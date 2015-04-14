@@ -1,0 +1,167 @@
+% LaTeX document template
+%
+% This uses several custom commands defined in sty/macros.sty
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{verbatim}
+\usepackage{a4wide}
+
+% Custom made packages (see sty/ folder):
+\usepackage{clistings}
+\usepackage{macros}
+
+% Bibliography
+\usepackage{natbib}
+\bibliographystyle{plainnat}  % also: cell, plain or alpha
+
+% Link stuff
+\usepackage{hyperref}
+\definecolor{citation}{RGB}{0,96,0}
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=citation, filecolor=black, urlcolor=blue}
+
+% For Brazilian Portuguese:
+% \usepackage[brazil]{babel}
+% \usepackage{indentfirst}
+
+% For sans serif:
+% \renewcommand{\familydefault}{\sfdefault}
+% \usepackage{sfmath}
+
+\title{\LaTeX\ Document Template}
+\author{
+	John Doe \\
+	{\small University of Someplace} \\
+	\texttt{\footnotesize johndoe@example.com} \\
+\and
+	Jane Doe \\
+	{\small University of Someplace} \\
+	\texttt{\footnotesize janedoe@example.org} \\
+}
+%\date{\today} % noop, change this to customize
+
+
+\begin{document}
+
+
+\maketitle
+
+\begin{abstract}
+This is a \LaTeX\ document template.  Instead of creating documents from
+scratch, this document can be used as a starting point.  It makes significant
+use of custom shorthand macros (check source for details).
+\end{abstract}
+
+\tableofcontents
+\pagebreak
+
+
+\section{Introduction}
+
+This is a \LaTeX\ document template.  Instead of creating documents from
+scratch, this document can be used as a starting point.  The source tex makes
+significant use of custom shorthand macros (check source for details).  It
+shows how to typeset items (\S\ref{sec:items}), marked paragraphs
+(\S\ref{sec:paragraphs}), source code (\S\ref{sec:source}), figures and tables
+(\S\ref{sec:ft}).
+
+According to \citet{proposing-proposals} it is important to cite or reference
+stuff, either as part of the text itself or at the end of paragraphs
+\citep{something,proposing-proposals}.
+
+This will be shown on output, obviously.
+\pass{This will also be shown.}
+\cmm{But this will not.}
+
+
+\section{Items}
+\label{sec:items}
+
+\subsection{Descriptions and Itemizations}
+
+Below is an example of descriptions and itemizations.  They are typeset into
+two columns. \mc{
+	\ize{
+		\item wooo;
+		\item hoooooo.
+	}
+	\don{
+		\item[Aspect A:] aspect A.
+		\item[Aspect B:] aspect B.
+	}
+}
+
+
+\subsection{Enumeration}
+\label{sec:enumeration}
+
+Three kinds of enumeration follow: numerals, letters and roman numerals.
+They are disposed in three columns.
+
+\mc[3]{
+	\enu{
+		\item first item;
+		\item second item;
+		\item third item;
+	}
+	\enu[a)]{
+		\item first item;
+		\item second item;
+		\item third item;
+	}
+	\enu[i.]{
+		\item first item;
+		\item second item;
+		\item third item;
+	}
+}
+
+
+\subsubsection{A sub-sub-section}
+
+This is a sub-sub-section.
+
+
+\section{Marked Paragraphs}
+\label{sec:paragraphs}
+
+\paragraph{First paragraph} This is the text of the first paragraph.
+
+\paragraph{Second paragraph} This is the text of the second paragraph.
+
+
+\section{Source code}
+\label{sec:source}
+
+A Haskell program follows:
+
+\begin{haskell}
+	function :: [a] -> [a]
+	function [] = []            -- comment
+	function (x:xs) = xs ++ [x]
+\end{haskell}
+
+
+\section{Figures and Tables}
+\label{sec:ft}
+
+Figure \ref{fig:graph} shows a graph.
+Table \ref{tab:table} has all letters in the alphabet.
+
+\fig[.35]{graph}{A directed graph}
+
+\begin{stable}{clr}{table}{Alphabet}
+	\hline
+    The  &  Quick  &  Brown  \\
+    \hline
+    Fox  &  Jumps  &  Over   \\
+    The  &  Lazy   &  Dog    \\
+	\hline 
+\end{stable} 
+
+
+\bibliography{bibliography}
+
+
+\end{document}
+
