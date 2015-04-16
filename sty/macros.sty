@@ -173,7 +173,11 @@
 % Text \comment{text }text == Text text
 \newcommand{\cmm}[1]{}
 
-
+\newcommand{\newfootnote}[2]{%
+	\newcommand{#1}{%
+		\footnote{#2}%
+	}%
+}%
 
 % named abstract, it backups the original name
 \newenvironment{namedabstract}[1]{

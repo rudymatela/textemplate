@@ -69,7 +69,12 @@ According to \citet{proposing-proposals} it is important to cite or reference
 stuff, either as part of the text itself or at the end of paragraphs
 \citep{something,proposing-proposals}.
 
-This will be shown on output, obviously.
+\newfootnote{\footlong}{%
+	Footnotes with a lot of text can also be typeset this way.
+	The quick brown fox jumps over the lazy dog.
+	Lorem ipsum dolor sit amet.
+}
+This will be shown\footnote{Footnotes are cool.} on output, obviously\footlong.
 \pass{This will also be shown.}
 \cmm{But this will not.}
 
