@@ -3,15 +3,21 @@
 %.pdf: %.eps
 	epstopdf $< > $@
 
-%.pdf: %.dot
-	dot -Tpdf < $< > $@
+%.eps: %.dot
+	dot -Tps < $< > $@
 
 %.pdf: %.svg
 	inkscape -A $@ $<
 
 %.eps: %.plt
-	gnuplot $< > $@
+	pyxplot $<
 
 %.eps: %.dia
 	dia -e $@ -t eps $<
+
+#%.pdf: %.dot
+#	dot -Tpdf < $< > $@
+
+#%.svg: %.dot
+#	dot -Tsvg < $< > $@
 
