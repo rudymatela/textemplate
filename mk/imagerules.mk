@@ -15,6 +15,8 @@
 %.eps: %.dia
 	dia -e $@ -t eps $<
 
+# Recently (2015), the pdf driver for dot has not been giving optimal results
+# It is better to have only rules above: dot -> eps -> pdf
 #%.pdf: %.dot
 #	dot -Tpdf < $< > $@
 
