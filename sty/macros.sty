@@ -129,6 +129,7 @@
 \newcommand{\framed}[2][]{\begin{frame} \frametitle{#1} \begin{description} #2 \end{description} \end{frame}}
 \newcommand{\framee}[2][]{\begin{frame} \frametitle{#1} \begin{enumerate} #2 \end{enumerate} \end{frame}}
 \newcommand{\frameT}[1]{\frame{\centering \usebeamerfont{frametitle} \usebeamercolor[fg]{frametitle} #1}}
+\newcommand{\frameTnohandout}[1]{\frame<handout:0>{\centering \usebeamerfont{frametitle} \usebeamercolor[fg]{frametitle} #1}}
 
 \newcommand{\sframet}[2]{\section{#1}\framet[#1]{#2}}
 \newcommand{\sframei}[2]{\section{#1}\framei[#1]{#2}}
