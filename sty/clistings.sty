@@ -41,29 +41,26 @@
 \definecolor{keyword}{RGB}{16,16,160}%
 \definecolor{string}{RGB}{160,16,16}%
 \definecolor{comment}{RGB}{64,192,64}%
-% todo: Fade out string -- use pinta -- white box 50% opacity (128)
-% for now falling back to basic fade:
 \DeclareOption{fadenormal}{%
-	\definecolor{fadebasic}{RGB}{128,128,128}%
-	\definecolor{fadeoperator}{RGB}{218,183,150}%
-	\definecolor{fadekeyword}{RGB}{136,136,208}%
-	\definecolor{fadestring}{RGB}{128,128,128}%
-	\definecolor{fadecomment}{RGB}{160,224,160}%
+	\colorlet{fadebasic}{basic!50}%
+	\colorlet{fadeoperator}{operator!50}%
+	\colorlet{fadekeyword}{keyword!50}%
+	\colorlet{fadestring}{string!50}%
+	\colorlet{fadecomment}{comment!50}%
 }
-\DeclareOption{fadeprojector}{% + 32 on each element
-	\definecolor{fadebasic}{RGB}{160,160,160}%
-	\definecolor{fadeoperator}{RGB}{250,215,182}%
-	\definecolor{fadekeyword}{RGB}{168,168,240}%
-	\definecolor{fadestring}{RGB}{160,160,160}%
-	\definecolor{fadecomment}{RGB}{192,255,192}%
+\DeclareOption{fadeprojector}{%
+	\colorlet{fadebasic}{basic!37}%
+	\colorlet{fadeoperator}{operator!37}%
+	\colorlet{fadekeyword}{keyword!37}%
+	\colorlet{fadestring}{string!37}%
+	\colorlet{fadecomment}{comment!37}%
 }
-\DeclareOption{fadeprint}{% todo: Improve this by doing on a tool
-	%\definecolor{fadebasic}{RGB}{96,96,96}%
-	\definecolor{fadebasic}{RGB}{64,64,64}%
-	\definecolor{fadeoperator}{RGB}{218,183,150}%
-	\definecolor{fadekeyword}{RGB}{136,136,208}%
-	\definecolor{fadestring}{RGB}{128,128,128}%
-	\definecolor{fadecomment}{RGB}{160,224,160}%
+\DeclareOption{fadeprint}{
+	\colorlet{fadebasic}{basic!75}%
+	\colorlet{fadeoperator}{operator!75}%
+	\colorlet{fadekeyword}{keyword!75}%
+	\colorlet{fadestring}{string!75}%
+	\colorlet{fadecomment}{comment!75}%
 }
 \ExecuteOptions{fadenormal}
 \ProcessOptions
