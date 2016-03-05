@@ -42,6 +42,11 @@
 %	}
 %}
 
+\newcommand{\colorize}[1]{
+\setbeamercolor{normal text}{bg=#1!4}
+\setbeamercolor{structure}{fg=#1!24!black} % ,bg=#1!16}
+}
+
 \begin{document}
 
 \frame{\titlepage}
@@ -49,8 +54,8 @@
 \framet[Outline]{ \tableofcontents }
 
 
-\section{Simple examples}
-\frameT{Simple examples}
+\colorize{white}
+\sframeT{Simple examples}
 
 \framei[Bullet points]{
 	\im This shows how to typeset bullet points
@@ -85,8 +90,8 @@
 	commodo consequat.
 }
 
-\section{More simple examples}
-\frameT{More simple examples}
+\colorize{orange}
+\sframeT{More simple examples}
 
 \framed[Item descriptions]{
 	\item[This] is like this
@@ -127,6 +132,7 @@
 	\end{verbatim}
 \end{frame}
 
+\colorize{white}
 \frameT{Thank you!}
 
 \end{document}
