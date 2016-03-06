@@ -23,7 +23,6 @@
 %\usepackage{comicneue} % [nosfdefault] to allow inclusion
 %\usepackage{raleway}
 
-% TODO: Add abstract slide
 % TODO: Add enumerate slide
 % TODO: Add logos on title page?
 % TODO: Add code listing outside verbatim (via texttt)
@@ -55,10 +54,7 @@
 
 \begin{document}
 
-\framet[%
-  \insertshorttitle \\
-  \small (\insertshortauthor{} -- \insertdate)
-]{\parbox{\linewidth}{%
+\frameabs{
 	I find it useful to put the paper/talk abstract
 		as the first slide.
 	People that arrived earlier can read the abstract
@@ -70,7 +66,7 @@
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit,
 		sed do eiusmod tempor incididunt
 		ut labore et dolore magna aliqua.
-}}
+}
 
 
 \frame{\titlepage}

@@ -5,6 +5,7 @@
 % Created as part of 'textemplate'.
 %
 % TODO: verbatimframe environment and framev command?
+\RequirePackage{xifthen}
 \ProvidesPackage{beamer-helper}[2016/03/06 Helper macros for Beamer]
 \ExecuteOptions{}
 
@@ -14,17 +15,27 @@
   \begin{frame}\frametitle{#1}\startdescription}{\stopdescription\end{frame}}
 \newenvironment{enumerateframe}[1][]{%
   \begin{frame}\frametitle{#1}\startenumerate}{\stopenumerate\end{frame}}
+\newenvironment{abstractframe}[1][]{%
+  \begin{frame}%
+  \ifthenelse{\isempty{#1}}%
+    {\frametitle{\insertshorttitle\\\small(\insertshortauthor{} -- \insertdate)}}%
+    {\frametitle{#1}}%
+  \startminipage%
+  }{%
+  \stopminipage%
+  \end{frame}%
+  }
 
 % Special frames
 \newcommand{\framet}[2][]{\begin{frame}\frametitle{#1}#2\end{frame}}
 \newcommand{\framei}[2][]{\begin{itemizeframe}\frametitle{#1}#2\end{itemizeframe}}
 \newcommand{\framed}[2][]{\begin{descriptionframe}\frametitle{#1}#2\end{descriptionframe}}
 \newcommand{\framee}[2][]{\begin{enumerateframe}\frametitle{#1}#2\end{enumerateframe}}
+\newcommand{\frameabs}[2][]{\begin{abstractframe}[#1]#2\end{abstractframe}}
 \newcommand{\frameT}[1]{{%
   \setbeamercolor{normal text}{use=structure,bg=structure.fg}%
   \frame{%
     \centering%
-    %\setbeamercolor{normal text}{use=structure.fg,bg=structure.fg}%
     \usebeamerfont{frametitle}%
     \usebeamercolor[bg]{frametitle}%
     #1}}}
@@ -32,7 +43,6 @@
   \setbeamercolor{normal text}{use=structure,bg=structure.fg}%
   \frame<handout:0>{%
     \centering%
-    %\setbeamercolor{normal text}{use=structure.fg,bg=structure.fg}%
     \usebeamerfont{frametitle}%
     \usebeamercolor[bg]{frametitle}%
     #1}}}
@@ -61,5 +71,7 @@
 \newcommand\stopdescription{\end{description}}
 \newcommand\startenumerate{\begin{enumerate}}
 \newcommand\stopenumerate{\end{enumerate}}
+\newcommand\startminipage{\begin{minipage}{\linewidth}}
+\newcommand\stopminipage{\end{minipage}}
 
 \endinput
