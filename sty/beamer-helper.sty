@@ -15,6 +15,8 @@
   \begin{frame}\frametitle{#1}\startdescription}{\stopdescription\end{frame}}
 \newenvironment{enumerateframe}[1][]{%
   \begin{frame}\frametitle{#1}\startenumerate}{\stopenumerate\end{frame}}
+\newenvironment{justifiedframe}[1][]{%
+  \begin{frame}\frametitle{#1}\startminipage}{\stopminipage\end{frame}}
 \newenvironment{abstractframe}[1][]{%
   \begin{frame}%
   \ifthenelse{\isempty{#1}}%
@@ -28,9 +30,11 @@
 
 % Special frames
 \newcommand{\framet}[2][]{\begin{frame}\frametitle{#1}#2\end{frame}}
+\newcommand{\framett}[2][]{\begin{frame}[t]\frametitle{#1}\ttfamily#2\end{frame}}
 \newcommand{\framei}[2][]{\begin{itemizeframe}\frametitle{#1}#2\end{itemizeframe}}
 \newcommand{\framed}[2][]{\begin{descriptionframe}\frametitle{#1}#2\end{descriptionframe}}
 \newcommand{\framee}[2][]{\begin{enumerateframe}\frametitle{#1}#2\end{enumerateframe}}
+\newcommand{\framej}[2][]{\begin{justifiedframe}\frametitle{#1}#2\end{justifiedframe}}
 \newcommand{\frameabs}[2][]{\begin{abstractframe}[#1]#2\end{abstractframe}}
 \newcommand{\frameT}[1]{{%
   \setbeamercolor{normal text}{use=structure,bg=structure.fg}%

@@ -61,7 +61,7 @@
 		while people enter the meeting room.
 	This slide looks better justified.
 	The abstract will possibly have to be shortened for insertion here.
-	Or, this text can be prepended by \texttt{\textbackslash{}small}
+	Or, this text can be prepended by \texttt{\textbackslash small}
 		so more can be fit into the abstract slide.
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit,
 		sed do eiusmod tempor incididunt
@@ -110,6 +110,15 @@
 	commodo consequat.
 }
 
+\framej[Justified text slide]{
+	A justified text slide.
+
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+	veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+	commodo consequat.
+}
+
 \colorize{orange}
 \sframeT{More simple examples}
 
@@ -151,6 +160,17 @@
 	}
 	\end{verbatim}
 \end{frame}
+
+\framett[Hello world, typeset with no verbatim]{
+	/* Typesetting this may be better \\
+    ~* because fragile frames \\
+    ~* are slow to compile */ \\
+	int main() \\
+	\{ \\
+	~~~~printf("Hello world"); \\
+	~~~~return 0; \\
+	\} \\
+}
 
 \colorize{white}
 \frameT{Thank you!}
