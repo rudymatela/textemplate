@@ -2,10 +2,17 @@
 %
 % Author: Rudy Matela <rudy@matela.com.br>
 %
-% This was created as part of the textemplate.
+% This was created as part of 'textemplate'.
 
 \RequirePackage{enumerate,multicol,graphicx}
+\ProvidesPackage{macros}
 
+\newif\if@tabletop\@tabletopfalse%
+\DeclareOption{tabletop}{%
+  \@tabletoptrue%
+}
+\ExecuteOptions{}%
+\ProcessOptions\relax%
 
 
 % -------- General purpose macros -------- %
@@ -65,32 +72,66 @@
 
 
 % Example:
-% \begin{stable}{|l|c|r|}{id}{Caption}
+% \begin{stable}{lcr}{id}{Caption}
 % 	this & is & a \\
 %   test & O  & o \\
 % \end{stable}
 % Take a look at table \ref{tab:id}
 \newenvironment{stable}[4][htb]{%
 	\begin{table}[#1]%
-		\small%
-		\caption{#4}%
-		\label{tab:#3}%
-		\begin{ctabular}{#2}%
+		\if@tabletop%
+			\def\tablecaption{#4}%
+			\def\tablelabel{tab:#3}%
+		\else%
+			\caption{#4}%
+			\label{#3}%
+		\fi%
+		\begin{sctabular}{#2}%
 }{%
-		\end{ctabular}%
+		\end{sctabular}%
+		\if@tabletop%
+			\caption{\tablecaption}%
+			\label{\tablelabel}%
+		\fi%
 	\end{table}%
 }
 
-
 \newenvironment{ntable}[4][htb]{%
 	\begin{table}[#1]%
-		\small%
-		\caption{#4}%
-		\label{tab:#3}%
+		\if@tabletop%
+			\def\tablecaption{#4}%
+			\def\tablelabel{tab:#3}%
+		\else%
+			\caption{#4}%
+			\label{#3}%
+		\fi%
 		\begin{ctabular}{#2}%
 }{%
 		\end{ctabular}%
+		\if@tabletop%
+			\caption{\tablecaption}%
+			\label{\tablelabel}%
+		\fi%
 	\end{table}%
+}
+
+\newenvironment{ntable*}[4][htb]{%
+	\begin{table*}[#1]%
+		\if@tabletop%
+			\def\tablecaption{#4}%
+			\def\tablelabel{tab:#3}%
+		\else%
+			\caption{#4}%
+			\label{#3}%
+		\fi%
+		\begin{ctabular}{#2}%
+}{%
+		\end{ctabular}%
+		\if@tabletop%
+			\caption{\tablecaption}%
+			\label{\tablelabel}%
+		\fi%
+	\end{table*}%
 }
 
 \newenvironment{xsctabular}[1]{%
@@ -203,3 +244,5 @@
 
 % cite with possesive, for use with natbib package
 \newcommand{\citepss}[1]{\citeauthor{#1}'s (\citeyear{#1})}
+
+\endinput
