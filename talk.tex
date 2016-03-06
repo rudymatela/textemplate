@@ -23,9 +23,14 @@
 %\usepackage{comicneue} % [nosfdefault] to allow inclusion
 %\usepackage{raleway}
 
-\title[My talk]{
-	\LaTeX\ talk template
-}
+% TODO: Add abstract slide
+% TODO: Add enumerate slide
+% TODO: Add logos on title page?
+% TODO: Add code listing outside verbatim (via texttt)
+% TODO: Add lstlisting code listing
+% TODO: Add more section titles
+
+\title[Template]{\LaTeX{} talk template}
 \author[John Doe]{%
 	John Doe \\
 	\texttt{\footnotesize johndoe@example.com}
@@ -43,16 +48,16 @@
 %	}
 %}
 
-\newcommand{\colorize}[1]{
-\setbeamercolor{normal text}{bg=#1!4}
-\setbeamercolor{structure}{fg=#1!24!black} % ,bg=#1!16}
+\newcommand{\colorize}[1]{%
+\setbeamercolor{normal text}{bg=#1!4}%
+\setbeamercolor{structure}{fg=#1!24!black}% ,bg=#1!16}
 }
 
 \begin{document}
 
 \frame{\titlepage}
 
-\framet[Outline]{ \tableofcontents }
+\framet[Outline]{\tableofcontents}
 
 
 \colorize{white}
