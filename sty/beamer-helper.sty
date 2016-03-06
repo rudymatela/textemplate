@@ -6,11 +6,18 @@
 \ProvidesPackage{beamer-helper}[2016/03/06 Helper macros for Beamer]
 \ExecuteOptions{}
 
+\newenvironment{itemizeframe}[1][]{%
+  \begin{frame}\frametitle{#1}\startitemize}{\stopitemize\end{frame}}
+\newenvironment{descriptionframe}[1][]{%
+  \begin{frame}\frametitle{#1}\startdescription}{\stopdescription\end{frame}}
+\newenvironment{enumerateframe}[1][]{%
+  \begin{frame}\frametitle{#1}\startenumerate}{\stopenumerate\end{frame}}
+
 % Special frames
 \newcommand{\framet}[2][]{\begin{frame}\frametitle{#1}#2\end{frame}}
-\newcommand{\framei}[2][]{\begin{frame}\frametitle{#1}\begin{itemize}#2\end{itemize}\end{frame}}
-\newcommand{\framed}[2][]{\begin{frame}\frametitle{#1}\begin{description}#2\end{description}\end{frame}}
-\newcommand{\framee}[2][]{\begin{frame}\frametitle{#1}\begin{enumerate}#2\end{enumerate}\end{frame}}
+\newcommand{\framei}[2][]{\begin{itemizeframe}\frametitle{#1}#2\end{itemizeframe}}
+\newcommand{\framed}[2][]{\begin{descriptionframe}\frametitle{#1}#2\end{descriptionframe}}
+\newcommand{\framee}[2][]{\begin{enumerateframe}\frametitle{#1}#2\end{enumerateframe}}
 \newcommand{\frameT}[1]{{%
   \setbeamercolor{normal text}{use=structure,bg=structure.fg}%
   \frame{%
@@ -42,5 +49,15 @@
 \newcommand{\pitem}{\pause \item}
 \newcommand{\pim}{\pitem}
 \newcommand{\alr}[2]{\begin{alertblock}{#1}#2\end{alertblock}}
+
+% Only used internally at this file
+% These are needed as of Beamer 3.33
+% c.f. Beamer 3.33 Documentation, section 8.1, The Frame Environment
+\newcommand\startitemize{\begin{itemize}}
+\newcommand\stopitemize{\end{itemize}}
+\newcommand\startdescription{\begin{description}}
+\newcommand\stopdescription{\end{description}}
+\newcommand\startenumerate{\begin{enumerate}}
+\newcommand\stopenumerate{\end{enumerate}}
 
 \endinput
