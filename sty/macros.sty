@@ -20,57 +20,41 @@
 % Command \incg[proportional_width]{name}
 % proportional_width: The figure width, default is .5
 % name: file name to be prepended by fig/
-\newcommand{\incg}[2][.5]{%
-	\includegraphics[width=#1\textwidth]{fig/#2}%
-}
-
-\newcommand{\cincg}[2][.5]{%
-	\begin{center}%
-	\incg[#1]{#2}%
-	\end{center}%
-}
+\newcommand{\incg}[2][.5]{\includegraphics[width=#1\textwidth]{fig/#2}}
+\newcommand{\cincg}[2][.5]{\begin{center}\incg[#1]{#2}\end{center}}
 
 % Command \incgh[proportional_height]{name}
 % proportional_height: The figure height, default is .5
 % name: file name to be prepended by fig/
-\newcommand{\incgh}[2][.5]{%
-	\includegraphics[height=#1\textwidth]{fig/#2}%
-}
+\newcommand{\incgh}[2][.5]{\includegraphics[height=#1\textheight]{fig/#2}}
 
 % Command \fig[proportional_width]{name}{Caption}
 % proportional_width: The figure width, default is .5
 % name: file name and label name to pe prepended by fig/ and fig:
 % Caption: figure caption
 \newcommand{\fig}[3][.5]{%
-	\begin{cfigure}%
-		\incg[#1]{#2}%
-		\caption{#3}%
-		\label{fig:#2}%
-	\end{cfigure}%
+  \begin{labelledfigure}{#2}{#3}%
+  \cincg[#1]{#2}%
+  \end{labelledfigure}%
 }
 
-
-% Centered figure environment, same parameters as the original one
-\newenvironment{cfigure}[1][htbp]{%
-	\begin{figure}[#1]%
-	\centering%
+% \begin{laballedfigure}[pos]{label}{The Caption}
+% ...
+% \end{labelledfigure}
+%
+% becomes:
+%
+% \begin{figure}
+% ...
+% \caption{The Caption}\label{fig:label}
+% \end{figure}
+\newenvironment{labelledfigure}[3][htbp]{%
+  \begin{figure}[#1]%
+  \def\figurecaption{#3}\def\figurelabel{fig:#2}%
 }{%
-	\end{figure}%
+  \caption{\figurecaption}\label{\figurelabel}%
+  \end{figure}%
 }
-
-
-% Centered figure with automatic caption and label
-\newenvironment{cfigurecl}[3][htbp]{%
-	\begin{cfigure}[#1]%
-	\def\cfigureclcaption{#3}%
-	\def\cfigurecllabel{fig:#2}%
-}{%
-	\caption{\cfigureclcaption}%
-	\label{\cfigurecllabel}%
-	\end{cfigure}%
-}
-
-
 \newenvironment{labelledtable}[4][htb]{%
   \begin{table}[#1]%
   \if@tabletop%
@@ -118,7 +102,7 @@
     \begin{ctabular}{#2}%
 }{%
     \end{ctabular}%
-  \end{labelledtable}
+  \end{labelledtable}%
 }
 
 \newenvironment{ntable*}[4][htb]{%
@@ -229,7 +213,7 @@
 	}%
 }%
 
-% named abstract, it backups the original name
+% Abstract with a different name
 \newenvironment{namedabstract}[1]{%
 	\def\originalabstractname{\abstractname}%
 	\renewcommand{\abstractname}{#1}%
