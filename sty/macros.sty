@@ -71,6 +71,34 @@
 }
 
 
+\newenvironment{labelledtable}[4][htb]{%
+  \begin{table}[#1]%
+  \if@tabletop%
+    \def\tablecaption{#4}\def\tablelabel{tab:#3}%
+  \else%
+    \caption{#4}\label{#3}%
+  \fi%
+}{%
+  \if@tabletop%
+    \caption{\tablecaption}\label{\tablelabel}%
+  \fi%
+  \end{table}%
+}
+\newenvironment{labelledtable*}[4][htb]{%
+  \begin{table*}[#1]%
+  \if@tabletop%
+    \def\tablecaption{#4}\def\tablelabel{tab:#3}%
+  \else%
+    \caption{#4}\label{#3}%
+  \fi%
+}{%
+  \if@tabletop%
+    \caption{\tablecaption}\label{\tablelabel}%
+  \fi%
+  \end{table*}%
+}
+
+
 % Example:
 % \begin{stable}{lcr}{id}{Caption}
 % 	this & is & a \\
@@ -78,60 +106,27 @@
 % \end{stable}
 % Take a look at table \ref{tab:id}
 \newenvironment{stable}[4][htb]{%
-	\begin{table}[#1]%
-		\if@tabletop%
-			\def\tablecaption{#4}%
-			\def\tablelabel{tab:#3}%
-		\else%
-			\caption{#4}%
-			\label{#3}%
-		\fi%
-		\begin{sctabular}{#2}%
+  \begin{labelledtable}[#1]{#2}{#3}{#4}%
+    \begin{sctabular}{#2}%
 }{%
-		\end{sctabular}%
-		\if@tabletop%
-			\caption{\tablecaption}%
-			\label{\tablelabel}%
-		\fi%
-	\end{table}%
+    \end{sctabular}%
+  \end{labelledtable}%
 }
 
 \newenvironment{ntable}[4][htb]{%
-	\begin{table}[#1]%
-		\if@tabletop%
-			\def\tablecaption{#4}%
-			\def\tablelabel{tab:#3}%
-		\else%
-			\caption{#4}%
-			\label{#3}%
-		\fi%
-		\begin{ctabular}{#2}%
+  \begin{labelledtable}[#1]{#2}{#3}{#4}%
+    \begin{ctabular}{#2}%
 }{%
-		\end{ctabular}%
-		\if@tabletop%
-			\caption{\tablecaption}%
-			\label{\tablelabel}%
-		\fi%
-	\end{table}%
+    \end{ctabular}%
+  \end{labelledtable}
 }
 
 \newenvironment{ntable*}[4][htb]{%
-	\begin{table*}[#1]%
-		\if@tabletop%
-			\def\tablecaption{#4}%
-			\def\tablelabel{tab:#3}%
-		\else%
-			\caption{#4}%
-			\label{#3}%
-		\fi%
-		\begin{ctabular}{#2}%
+  \begin{labelledtable*}[#1]{#2}{#3}{#4}%
+    \begin{ctabular}{#2}%
 }{%
-		\end{ctabular}%
-		\if@tabletop%
-			\caption{\tablecaption}%
-			\label{\tablelabel}%
-		\fi%
-	\end{table*}%
+    \end{ctabular}%
+  \end{labelledtable*}%
 }
 
 % Extra small centered tabular environment
