@@ -140,63 +140,22 @@
 }
 
 
+% -- Save typing time --
 
-% -------- Beamer Presentation macros --------- %
-
-\newcommand{\framet}[2][]{\begin{frame} \frametitle{#1} #2 \end{frame}}
-\newcommand{\framei}[2][]{\begin{frame} \frametitle{#1} \begin{itemize} #2 \end{itemize} \end{frame}}
-\newcommand{\framed}[2][]{\begin{frame} \frametitle{#1} \begin{description} #2 \end{description} \end{frame}}
-\newcommand{\framee}[2][]{\begin{frame} \frametitle{#1} \begin{enumerate} #2 \end{enumerate} \end{frame}}
-\newcommand{\frameT}[1]{{%
-  \setbeamercolor{normal text}{use=structure,bg=structure.fg}%
-  \frame{%
-    \centering%
-    %\setbeamercolor{normal text}{use=structure.fg,bg=structure.fg}%
-    \usebeamerfont{frametitle}%
-    \usebeamercolor[bg]{frametitle}%
-    #1}}}
-\newcommand{\frameTnohandout}[1]{{%
-  \setbeamercolor{normal text}{use=structure,bg=structure.fg}%
-  \frame<handout:0>{%
-    \centering%
-    %\setbeamercolor{normal text}{use=structure.fg,bg=structure.fg}%
-    \usebeamerfont{frametitle}%
-    \usebeamercolor[bg]{frametitle}%
-    #1}}}
-\newcommand{\sframet}[2]{\section{#1}\framet[#1]{#2}}
-\newcommand{\sframei}[2]{\section{#1}\framei[#1]{#2}}
-\newcommand{\sframed}[2]{\section{#1}\framed[#1]{#2}}
-\newcommand{\sframeT}[1]{\section{#1}\frameT{#1}}
-
-\newcommand{\ssframet}[2]{\subsection{#1}\framet[#1]{#2}}
-\newcommand{\ssframei}[2]{\subsection{#1}\framei[#1]{#2}}
-\newcommand{\ssframed}[2]{\subsection{#1}\framed[#1]{#2}}
-
-% Commands for saving typing time
 \newcommand{\ize}[1]{\begin{itemize}#1\end{itemize}}
 \newcommand{\enu}[2][1.]{\begin{enumerate}[#1]#2\end{enumerate}}
 \newcommand{\don}[1]{\begin{description}#1\end{description}}
-\newcommand{\alr}[2]{\begin{alertblock}{#1}#2\end{alertblock}}
+\newcommand{\im}{\item}
+
 \newcommand{\mc}[2][2]{\begin{multicols}{#1}#2\end{multicols}}
 \newcommand{\mcdon}[2][2]{\mc[#1]{\don{#2}}}
 \newcommand{\mcize}[2][2]{\mc[#1]{\ize{#2}}}
-\newcommand{\xmcize}[2][2]{\vspace{-2ex}\mc[#1]{\ize{#2}}}
-
-\newcommand{\pitem}{\pause \item}
-
-% When you don't want to type item:
-\newcommand{\im}{\item}
 
 % Gray strike out (needs xcolor and ulem)
 \newcommand{\gsout}[1]{\textcolor{gray}{\sout{#1}}}
 
-% When you're using itemize for description:
-\newcommand{\imb}[1]{\item[\textbf{#1}]}
 
-
-
-
-% Miscellaneos commands
+% -- Comments --
 
 % Text \pass{text} text == Text text text
 \newcommand{\pass}[1]{#1}
@@ -206,6 +165,9 @@
 % Text \comment{text} text == Text  text
 % Text \comment{text }text == Text text
 \newcommand{\cmm}[1]{}
+
+
+% -- Etc --
 
 \newcommand{\newfootnote}[2]{%
 	\newcommand{#1}{%
