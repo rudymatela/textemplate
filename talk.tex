@@ -15,6 +15,7 @@
 \usepackage{multicol}
 \usepackage{macros}
 \usepackage{beamer-helper}
+\usepackage{clistings}
 \usepackage[T1]{fontenc}
 \setbeamertemplate{itemize items}[square]
 
@@ -24,7 +25,6 @@
 %\usepackage{raleway}
 
 % TODO: Add logos on title page?
-% TODO: Add lstlisting code listing
 % TODO: setbeamercovered
 % TODO: Optional tikz gradient background?
 %\usepackage{tikz}
@@ -221,6 +221,20 @@ If \texttt{a = b} then \texttt{a = b}
 	~~~~return 0; \\
 	\} \\
 }
+
+\begin{frame}[fragile,t]{Hello world, via \texttt{(c)listings}}
+\begin{haskell}
+hwords :: [String]
+hwords = [ "Hello"
+         , "world" ]
+
+hw :: String
+hw = unwords hwords
+
+main :: IO ()
+main = putStrLn hw
+\end{haskell}
+\end{frame}
 
 \colorize{white}
 \frameT{Thank you!}
