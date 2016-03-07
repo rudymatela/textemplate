@@ -4,6 +4,10 @@
 }{
 	\documentclass[14pt]{beamer} % default is 11pt
 }
+% Font sizes:
+%   default:      11pt
+%   larger:       14pt
+%   power point:  17pt  (too large for my taste)
 
 \usetheme{default}
 \usecolortheme{dove}
@@ -21,11 +25,10 @@
 
 % Font -- choose one
 \usepackage{gillius}
-%\usepackage{comicneue} % [nosfdefault] to allow inclusion
+%\usepackage{comicneue} % [nosfdefault] to not set as default
 %\usepackage{raleway}
 
 % TODO: Add logos on title page?
-% TODO: setbeamercovered
 % TODO: Optional tikz gradient background?
 %\usepackage{tikz}
 %\usebackgroundtemplate{
@@ -55,9 +58,11 @@
 %}
 
 \newcommand{\colorize}[1]{%
-\setbeamercolor{normal text}{bg=#1!4}%
+\setbeamercolor{normal text}{bg=#1!6}%
 \setbeamercolor{structure}{fg=#1!24!black}% ,bg=#1!16}
 }
+\setbeamercovered{transparent=12, again covered={\opaqueness<1->{24}}}
+
 
 \begin{document}
 
@@ -148,7 +153,7 @@ If \texttt{a = b} then \texttt{a = b}
 }
 
 \framet[Centered image, no bullets]{
-	\cincg{diagram}
+	\cincg[0.8]{diagram}
 }
 
 
