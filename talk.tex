@@ -23,10 +23,8 @@
 %\usepackage{comicneue} % [nosfdefault] to allow inclusion
 %\usepackage{raleway}
 
-% TODO: Add enumerate slide
 % TODO: Add logos on title page?
 % TODO: Add lstlisting code listing
-% TODO: Add more section titles
 % TODO: Optional tikz gradient background?
 %\usepackage{tikz}
 %\usebackgroundtemplate{
@@ -71,9 +69,11 @@
 	The abstract will possibly have to be shortened for insertion here.
 	Or, this text can be prepended by \texttt{\textbackslash small}
 		so more can be fit into the abstract slide.
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-		sed do eiusmod tempor incididunt
-		ut labore et dolore magna aliqua.
+	\textbf{Warning:
+		this template makes heavy use of custom macros.}
+	Consult the beamer documentation
+		if you want to typeset
+		in the ``standard way''.
 }
 
 
@@ -83,16 +83,62 @@
 
 
 \colorize{white}
-\sframeT{Simple examples}
+\sframeT{Typesetting lists}
 
 \framei[Bullet points]{
-	\item This shows how to typeset bullet points
+	\item Use \texttt{\textbackslash framei} or \texttt{\textbackslash ize}
+		to typeset bullet points
 	\item It is possible to typeset sub-items: \ize{
 		\item like
 		\item this
 	}
 	\item That's it
 }
+
+\framei{
+	\pitem This is an animated slide on \texttt{talk.pdf}
+	\pitem This wont be shown animated on \texttt{talk-handout.pdf}
+	\pitem Slide title is optional
+}
+
+\framed{
+	\item[What?] A description
+	\item[How?] Using \texttt{\textbackslash framed}
+	               or \texttt{\textbackslash don}
+	\item[When?] Now!
+}
+
+\framee{
+	\item The first item
+	\item The second item \enu[i.]{
+		\item Inner item
+		\item Another
+	}
+	\item The third item
+}
+
+
+\colorize{blue}
+\sframeT{Typesetting definitions, theorems or examples}
+
+\begin{frame}[<+>]
+\begin{definition}
+Definitions are defined by stating definitions iff:
+the definition is definable.
+
+(this slide is animated)
+\end{definition}
+
+% TODO: Fix color of example
+\begin{example}[definition]
+If \texttt{a = b} then \texttt{a = b}
+\end{example}
+\end{frame}
+
+
+
+\colorize{green}
+\sframeT{Typesetting images and graphics}
 
 \framei[Image and bullets]{
 	\item An important graph follows:
@@ -104,14 +150,13 @@
 	\cincg{diagram}
 }
 
-\framei[Animating]{
-	\pitem This is an:
-	\pitem animated
-	\pitem slide
-}
+
+\colorize{cyan}
+\sframeT{Typesetting text}
 
 \framet[Text-only slide]{
 	A text-only slide.
+
 	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
 	veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -128,13 +173,7 @@
 }
 
 \colorize{orange}
-\sframeT{More simple examples}
-
-\framed[Item descriptions]{
-	\item[This] is like this
-	\item[That] is like that
-	\item[Something] is like a thing
-}
+\sframeT{Controlling appearance in handout}
 
 % Specifying whether a slide is going to appear in the handout is not supported
 % by custom sty macros.  Explicit beamer code looks like this:
@@ -156,6 +195,8 @@
 	\end{itemize}
 \end{frame}
 
+\colorize{red}
+\sframeT{Typesetting source code listings}
 % To use verbatim or listing environments you have to make the frame fragile.
 % This makes the compilation a bit slower, potentially a lot slower if you do
 % this for a lot of slides.
