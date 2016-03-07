@@ -50,6 +50,10 @@
     \usebeamerfont{frametitle}%
     \usebeamercolor[bg]{frametitle}%
     #1}}}
+\newcommand{\frameiw}[3][]% frame image by width
+  {\begin{frame}\frametitle{#1}\cincg[#2]{#3}\end{frame}}
+\newcommand{\frameih}[3][]% frame image by height
+  {\begin{frame}\frametitle{#1}\cincgh[#2]{#3}\end{frame}}
 
 % Section frames
 \newcommand{\sframet}[2]{\section{#1}\framet[#1]{#2}}

@@ -27,6 +27,7 @@
 % proportional_height: The figure height, default is .5
 % name: file name to be prepended by fig/
 \newcommand{\incgh}[2][.5]{\includegraphics[height=#1\textheight]{fig/#2}}
+\newcommand{\cincgh}[2][.5]{\begin{center}\incgh[#1]{#2}\end{center}}
 
 % Command \fig[proportional_width]{name}{Caption}
 % proportional_width: The figure width, default is .5
