@@ -9,19 +9,17 @@
 \ProvidesPackage{beamer-helper}[2016/03/06 Helper macros for Beamer]
 \ExecuteOptions{}
 
-\newenvironment{itemizeframe}[1][]{%
-  \begin{frame}\frametitle{#1}\startitemize}{\stopitemize\end{frame}}
+\newenvironment{itemizeframe}[1][]{% comma needed or beamer will break
+  \begin{frame}[#1,]\startitemize}{\stopitemize\end{frame}}
 \newenvironment{descriptionframe}[1][]{%
-  \begin{frame}\frametitle{#1}\startdescription}{\stopdescription\end{frame}}
+  \begin{frame}[#1,]\startdescription}{\stopdescription\end{frame}}
 \newenvironment{enumerateframe}[1][]{%
-  \begin{frame}\frametitle{#1}\startenumerate}{\stopenumerate\end{frame}}
+  \begin{frame}[#1,]\startenumerate}{\stopenumerate\end{frame}}
 \newenvironment{justifiedframe}[1][]{%
-  \begin{frame}\frametitle{#1}\startminipage}{\stopminipage\end{frame}}
+  \begin{frame}[#1,]\startminipage}{\stopminipage\end{frame}}
 \newenvironment{abstractframe}[1][]{%
-  \begin{frame}%
-  \ifthenelse{\isempty{#1}}%
-    {\ft{\insertshorttitle}\fst{(\insertshortauthor{} -- \insertdate{})}}%
-    {\ft{#1}}%
+  \begin{frame}[#1,]%
+  \ft{\insertshorttitle}\fst{(\insertshortauthor{} -- \insertdate{})}%
   \startminipage%
   }{%
   \stopminipage%
