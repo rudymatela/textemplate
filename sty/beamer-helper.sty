@@ -9,16 +9,18 @@
 \ProvidesPackage{beamer-helper}[2016/03/06 Helper macros for Beamer]
 \ExecuteOptions{}
 
-\newenvironment{itemizeframe}[1][]{% comma needed or beamer will break
-  \begin{frame}[#1,]\startitemize}{\stopitemize\end{frame}}
+\newcommand{\bracketize}[1]{\ifthenelse{\isempty{#1}}{}{[#1]}}
+
+\newenvironment{itemizeframe}[1][]{% 'label=prev,' needed or beamer will break
+  \begin{frame}[label=prev,#1]\startitemize}{\stopitemize\end{frame}}
 \newenvironment{descriptionframe}[1][]{%
-  \begin{frame}[#1,]\startdescription}{\stopdescription\end{frame}}
+  \begin{frame}[label=prev,#1]\startdescription}{\stopdescription\end{frame}}
 \newenvironment{enumerateframe}[1][]{%
-  \begin{frame}[#1,]\startenumerate}{\stopenumerate\end{frame}}
+  \begin{frame}[label=prev,#1]\startenumerate}{\stopenumerate\end{frame}}
 \newenvironment{justifiedframe}[1][]{%
-  \begin{frame}[#1,]\startminipage}{\stopminipage\end{frame}}
+  \begin{frame}[label=prev,#1]\startminipage}{\stopminipage\end{frame}}
 \newenvironment{abstractframe}[1][]{%
-  \begin{frame}[#1,]%
+  \begin{frame}[label=prev,#1]%
   \ft{\insertshorttitle}\fst{(\insertshortauthor{} -- \insertdate{})}%
   \startminipage%
   }{%
@@ -27,12 +29,12 @@
   }
 
 % Special frames
-\newcommand{\ftxt}[2][]{\begin{frame}[#1,]#2\end{frame}}
+\newcommand{\ftxt}[2][]{\begin{frame}\bracketize{#1}#2\end{frame}}
 \newcommand{\fttt}[2][]{\begin{frame}[t,#1]\ttfamily#2\end{frame}}
-\newcommand{\fize}[2][]{\begin{itemizeframe}[#1,]#2\end{itemizeframe}}
-\newcommand{\fdon}[2][]{\begin{descriptionframe}[#1,]#2\end{descriptionframe}}
-\newcommand{\fenu}[2][]{\begin{enumerateframe}[#1,]#2\end{enumerateframe}}
-\newcommand{\fjus}[2][]{\begin{justifiedframe}[#1,]#2\end{justifiedframe}}
+\newcommand{\fize}[2][]{\begin{itemizeframe}[#1]#2\end{itemizeframe}}
+\newcommand{\fdon}[2][]{\begin{descriptionframe}[#1]#2\end{descriptionframe}}
+\newcommand{\fenu}[2][]{\begin{enumerateframe}[#1]#2\end{enumerateframe}}
+\newcommand{\fjus}[2][]{\begin{justifiedframe}[#1]#2\end{justifiedframe}}
 
 % Deprecated special frames
 \newcommand{\framet}[2][]{\begin{frame}\frametitle{#1}#2\end{frame}}
@@ -41,7 +43,7 @@
 \newcommand{\framed}[2][]{\begin{descriptionframe}\frametitle{#1}#2\end{descriptionframe}}
 \newcommand{\framee}[2][]{\begin{enumerateframe}\frametitle{#1}#2\end{enumerateframe}}
 \newcommand{\framej}[2][]{\begin{justifiedframe}\frametitle{#1}#2\end{justifiedframe}}
-\newcommand{\frameabs}[2][]{\begin{abstractframe}[#1,]#2\end{abstractframe}}
+\newcommand{\frameabs}[2][]{\begin{abstractframe}[#1]#2\end{abstractframe}}
 \newcommand{\frameT}[1]{{%
   \setbeamercolor{normal text}{use=structure,bg=structure.fg}%
   \frame{%
