@@ -84,7 +84,6 @@
 		in the ``standard way''.
 }
 
-
 \frame{\titlepage}
 
 \framet[Outline]{\tableofcontents}
@@ -93,30 +92,30 @@
 \colorize{white}
 \sframeT{Typesetting lists}
 
-\framei[Bullet points]{
+\fize[label=fize]{\ft{Bullet points}
 	\item Use \texttt{\textbackslash framei} or \texttt{\textbackslash ize}
 		to typeset bullet points
 	\item It is possible to typeset sub-items: \ize{
 		\item like
 		\item this
 	}
-	\item That's it
+	\item Repeat frames by \texttt{\textbackslash againframe}
 }
 
-\framei{
+\fize{
 	\pitem This is an animated slide on \texttt{talk.pdf}
 	\pitem This wont be shown animated on \texttt{talk-handout.pdf}
 	\pitem Slide title is optional
 }
 
-\framed{
+\fdon{
 	\item[What?] A description
 	\item[How?] Using \texttt{\textbackslash framed}
 	               or \texttt{\textbackslash don}
 	\item[When?] Now!
 }
 
-\framee{
+\fenu{
 	\item The first item
 	\item The second item \enu[i.]{
 		\item Inner item
@@ -125,6 +124,7 @@
 	\item The third item
 }
 
+\againframe{fize}
 
 \colorize{blue}
 \sframeT{Typesetting definitions, theorems or examples}
@@ -148,7 +148,7 @@ If \texttt{a = b} then \texttt{a = b}
 \colorize{green}
 \sframeT{Typesetting images and graphics}
 
-\framei[Image and bullets]{
+\framei{\ft{Image and bullets}
 	\item An important graph follows: \\[1ex]
 	\incg[0.6]{euler}
 	\item indeed...

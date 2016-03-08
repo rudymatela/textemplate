@@ -27,6 +27,14 @@
   }
 
 % Special frames
+\newcommand{\ftxt}[2][]{\begin{frame}[#1,]#2\end{frame}}
+\newcommand{\fttt}[2][]{\begin{frame}[t,#1]\ttfamily#2\end{frame}}
+\newcommand{\fize}[2][]{\begin{itemizeframe}[#1,]#2\end{itemizeframe}}
+\newcommand{\fdon}[2][]{\begin{descriptionframe}[#1,]#2\end{descriptionframe}}
+\newcommand{\fenu}[2][]{\begin{enumerateframe}[#1,]#2\end{enumerateframe}}
+\newcommand{\fjus}[2][]{\begin{justifiedframe}[#1,]#2\end{justifiedframe}}
+
+% Deprecated special frames
 \newcommand{\framet}[2][]{\begin{frame}\frametitle{#1}#2\end{frame}}
 \newcommand{\framett}[2][]{\begin{frame}[t]\frametitle{#1}\ttfamily#2\end{frame}}
 \newcommand{\framei}[2][]{\begin{itemizeframe}\frametitle{#1}#2\end{itemizeframe}}
