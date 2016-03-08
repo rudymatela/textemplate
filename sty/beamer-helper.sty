@@ -20,8 +20,8 @@
 \newenvironment{abstractframe}[1][]{%
   \begin{frame}%
   \ifthenelse{\isempty{#1}}%
-    {\frametitle{\insertshorttitle\\\small(\insertshortauthor{} -- \insertdate)}}%
-    {\frametitle{#1}}%
+    {\ft{\insertshorttitle}\fst{(\insertshortauthor{} -- \insertdate{})}}%
+    {\ft{#1}}%
   \startminipage%
   }{%
   \stopminipage%
@@ -66,6 +66,8 @@
 \newcommand{\ssframei}[2]{\subsection{#1}\framei[#1]{#2}}
 \newcommand{\ssframed}[2]{\subsection{#1}\framed[#1]{#2}}
 
+\newcommand\ft\frametitle
+\newcommand\fst\framesubtitle
 \newcommand{\pitem}{\pause \item}
 \newcommand{\pim}{\pitem}
 \newcommand{\alr}[2]{\begin{alertblock}{#1}#2\end{alertblock}}
