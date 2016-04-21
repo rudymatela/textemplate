@@ -21,7 +21,7 @@
   \begin{frame}[label=prev,#1]\startminipage}{\stopminipage\end{frame}}
 \newenvironment{abstractframe}[1][]{%
   \begin{frame}[label=prev,#1]%
-  \ft{\insertshorttitle}\fst{(\insertshortauthor{} -- \insertdate{})}%
+  \ft{\insertshorttitle{} {\normalsize\insertshortsubtitle}}\fst{(\insertshortauthor{} -- \insertdate{})}%
   \startminipage%
   }{%
   \stopminipage%
