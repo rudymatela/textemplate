@@ -12,13 +12,13 @@ QUIET        = quiet
 
 PDFLATEX     = $(QUIET) pdflatex -halt-on-error -file-line-error -output-directory tmp
 FASTPDFLATEX =          $(PDFLATEX) -draftmode
-HASBIB       =          grep -q '^[^%]*\\bibliography{.*}'
+HASBIB       =          grep -q '^\\bibdata{.*}$$'
 BIBTEX       = $(QUIET) bibtex
 
 %.pdf: %.tex
 	@mkdir -p tmp
 	$(FASTPDFLATEX) $<
-	if $(HASBIB) $<; then \
+	if $(HASBIB) tmp/$*.aux; then \
 	  $(BIBTEX) tmp/$* && \
 	  $(FASTPDFLATEX) $<; \
 	fi
@@ -28,7 +28,7 @@ BIBTEX       = $(QUIET) bibtex
 %-handout.pdf: %.tex
 	@mkdir -p tmp
 	$(FASTPDFLATEX) -jobname $*-handout $<
-	if $(HASBIB) $<; then \
+	if $(HASBIB) tmp/$*-handout.aux; then \
 	  $(BIBTEX) tmp/$*-handout && \
 	  $(FASTPDFLATEX) -jobname $*-handout $<; \
 	fi

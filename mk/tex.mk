@@ -12,13 +12,13 @@
 
 PDFLATEX     =          pdflatex -halt-on-error
 FASTPDFLATEX =          $(PDFLATEX) -draftmode
-HASBIB       =          grep -q '^[^%]*\\bibliography{.*}'
+HASBIB       =          grep -q '^\\bibdata{.*}$$'
 BIBTEX       =          bibtex
 
 
 %.pdf: %.tex
 	$(FASTPDFLATEX) $<
-	if $(HASBIB) $<; then \
+	if $(HASBIB) $*.aux; then \
 	  $(BIBTEX) $* && \
 	  $(FASTPDFLATEX) $<; \
 	fi
@@ -28,7 +28,7 @@ BIBTEX       =          bibtex
 # Only needed for automatic compilation of handout mode beamer slides:
 %-handout.pdf: %.tex
 	$(FASTPDFLATEX) -jobname $*-handout $<
-	if $(HASBIB) $<; then \
+	if $(HASBIB) $*-handout.aux; then \
 	  $(BIBTEX) $*-handout && \
 	  $(FASTPDFLATEX) -jobname $*-handout $<; \
 	fi
