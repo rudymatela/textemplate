@@ -3,7 +3,7 @@
 export TEXINPUTS ?= .:./sty:
 
 FIGS=fig/graph.pdf fig/watermark.pdf fig/diagram.pdf fig/euler.pdf
-TARGETS=paper.pdf talk.pdf talk-handout.pdf
+TARGETS=paper.pdf talk.pdf talk-handout.pdf graph-paper.pdf
 
 
 all: $(TARGETS)
@@ -13,6 +13,8 @@ paper.pdf: paper.tex bibliography.bib $(FIGS)
 talk.pdf: talk.tex $(FIGS)
 
 talk-handout.pdf: talk.tex $(FIGS)
+
+graph-paper.pdf: graph-paper.tex
 
 .PHONY: figs
 figs: $(FIGS)
