@@ -7,7 +7,7 @@
 	dot -Tps < $< > $@
 
 %.pdf: %.svg
-	inkscape -A $@ $<
+	inkscape -o $@ $<
 
 %.eps: %.plt
 	pyxplot $<
